@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>正在打开 Logseq...</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding-top: 20vh;">
+  <p id="status">正在唤起 Logseq...</p>
+  <script>
+    // 获取网址 # 号后面的全部内容
+    const target = decodeURIComponent(window.location.hash.slice(1));
+    
+    if (target && target.startsWith('logseq://')) {
+      window.location.href = target;
+      document.getElementById('status').innerHTML = 
+        '已尝试打开 Logseq。<br><br><a href="' + target + '">如果没有自动跳转，请点此手动打开</a>';
+    } else {
+      document.getElementById('status').textContent = '无效链接：请确保 # 后方以 logseq:// 开头。';
+    }
+  </script>
+</body>
+</html>
