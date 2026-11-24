@@ -10,7 +10,7 @@
     // 获取网址 # 号后面的全部内容
     const target = decodeURIComponent(window.location.hash.slice(1));
     
-    if (target && target.startsWith('logseq://')) {
+    if (target && target.startsWith('logseq-og://')) {
       window.location.href = target;
       document.getElementById('status').innerHTML = 
         '已尝试打开 Logseq。<br><br><a href="' + target + '">如果没有自动跳转，请点此手动打开</a>';
