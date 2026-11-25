@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Opening Logseq...</title>
+  <title>Opening App...</title>
 </head>
 <body style="font-family: sans-serif; text-align: center; padding-top: 20vh;">
-  <p id="status">Opening Logseq...</p>
+  <p id="status">Opening App...</p>
   <script>
     const target = decodeURIComponent(window.location.hash.slice(1));
+    const allowedSchemes = ['logseq-og://', 'logseq://', 'hook://'];
 
-    if (target && (target.startsWith('logseq-og://') || target.startsWith('logseq://'))) {
+    if (target && allowedSchemes.some((scheme) => target.startsWith(scheme))) {
       window.location.href = target;
       document.getElementById('status').innerHTML =
-        'Attempting to open Logseq.<br><br><a href="' + target + '">Click here if it did not open automatically</a>';
+        'Attempting to open target app.<br><br><a href="' + target + '">Click here if it did not open automatically</a>';
     } else {
       document.getElementById('status').textContent =
-        'Invalid URL: Please make sure the link after # starts with logseq-og:// or logseq://.';
+        'Invalid URL: Please make sure the link after # starts with a supported protocol (such as logseq://, logseq-og://, or hook://).';
     }
   </script>
 </body>
